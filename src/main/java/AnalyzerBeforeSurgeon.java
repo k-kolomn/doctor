@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
 
     static String name;
-    boolean cure;
-    String cureEmergency;
+    static boolean cure;
+    static String cureEmergency;
     Patient patient = Patient.create();
     Doctor doctor = new Doctor();
     Surgeon surgeon = new Surgeon(Surgeon.name);
@@ -17,9 +17,9 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
 
     @Override
     public String sendOwnPrescription(String conclusion,String whichDoctor) {
-        if (doctor.sendOwnPrescription(conclusion ).equals(doctor.firstStageOfEmergency)){
+        if (doctor.sendPrescriptionOfFamilyDoctor(conclusion ).equals(doctor.firstStageOfEmergency)){
             sendOwnPrescription(" ", "" );
-        } else if (doctor.sendOwnPrescription(conclusion).equals(doctor.secondStageOfEmergency)){
+        } else if (doctor.sendPrescriptionOfFamilyDoctor(conclusion).equals(doctor.secondStageOfEmergency)){
         sendOwnPrescription(" ", " ");
         } else {
             sendOwnPrescription(" " , " ");
@@ -39,7 +39,7 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
     }
 
     public static AnalyzerBeforeSurgeon create(String name){
-        AnalyzerBeforeSurgeon analyzerBeforeSurgeon = new AnalyzerBeforeSurgeon(name, this.cure);
+        AnalyzerBeforeSurgeon analyzerBeforeSurgeon = new AnalyzerBeforeSurgeon(name, cureEmergency ,cure);
 
         return analyzerBeforeSurgeon;
     }
