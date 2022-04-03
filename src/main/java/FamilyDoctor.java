@@ -16,18 +16,19 @@ public class FamilyDoctor extends Doctor implements DoctorMethod {
     public String sendOwnPrescription(String conclusion, String whichDoctor) {
         if (patient.symptoms.equals(firstStageOfEmergency)){
             cureEmergency = firstStageOfEmergency;
-            sendOwnPrescription(" ", " ");
-        } else if (patient.symptoms.equals(secondStageOfEmergency)){
+            sendOwnPrescription(conclusion, "Family Doctor");
+        } else if (patient.symptoms.equals(secondStageOfEmergency) && patient.symptoms.equals("Heart Attacks") || patient.symptoms.equals("Stomach Aches")){
             cureEmergency =  secondStageOfEmergency;
-            sendOwnPrescription(" ",  " ");
-        } else {
+            sendOwnPrescription(conclusion,  "AnalyzerBeforeSurgeon");
+        } else if (patient.symptoms.equals(thirdStageOfEmergency) && patient.symptoms.equals("Head Aches")){
             cureEmergency = thirdStageOfEmergency;
-            sendOwnPrescription(" ",  " ");
+            sendOwnPrescription( conclusion,  "Ophthalmologist");
+            sendOwnPrescription(conclusion, "AnalyzerBeforeSurgeon");
         }
         if (!cure){
-            sendOwnPrescription(" ",  " ");
+            sendOwnPrescription(conclusion, String.valueOf(doctor));
         } else {
-            sendOwnPrescription("Doctor has cure" ,  "");
+            sendOwnPrescription(conclusion ,  String.valueOf(doctor));
         }
         return conclusion;
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Doctor {
     // TODO: 28.03.2022 remake prescriptions of doctors, they can send only one pres., if they  want to send it to another doctor just add there "whichDoctor" and choice if they want or not
@@ -18,7 +19,8 @@ public class Doctor {
         this.cure = cure;
     }
 
-    public Doctor() {}
+    public Doctor() {
+    }
 
 
     public static Doctor create() {
@@ -26,31 +28,35 @@ public class Doctor {
         return doctor;
     }
 
-    public void getPrescriptionFromFamilyDoctor(){
-        String whichDoctor = "There is only own prescription of family doctor";
-          switch(whichDoctor){
-              case "AnalyzerBeforeSurgeon":{
-                        AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
-              } break;
-              case "Ophthalmologist":{
-                  Ophthalmologist ophthalmologist = new Ophthalmologist(Ophthalmologist.name, Ophthalmologist.cureEmergency, Ophthalmologist.cure);
-              } break;
-              case "Surgeon": {
-                  AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
-                  System.out.println("Firstly it has to be checked by analyzer");
-              } break;
-              case "FamilyDoctor":{
-                  System.out.println("It is owen prescription");
-                  FamilyDoctor familyDoctor = FamilyDoctor.create();
-              }
-          }
+    public void getPrescriptionFromFamilyDoctor() {
+        String whichDoctor = null;
+        switch (Objects.requireNonNull(whichDoctor)) {
+            case "AnalyzerBeforeSurgeon": {
+                AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
+            }
+            break;
+            case "Ophthalmologist": {
+                Ophthalmologist ophthalmologist = new Ophthalmologist(Ophthalmologist.name, Ophthalmologist.cureEmergency, Ophthalmologist.cure);
+            }
+            break;
+            case "Surgeon": {
+                AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
+                System.out.println("Firstly it has to be checked by analyzer");
+            }
+            break;
+            case "FamilyDoctor": {
+                System.out.println("It is owen prescription");
+                FamilyDoctor familyDoctor = FamilyDoctor.create();
+            }
+        }
     }
 
 
-    public String sendPrescriptionOfFamilyDoctor(String conclusion) {
+    public String sendPrescriptionOfFamilyDoctor(String conclusion, String whichDoctor) {
 
         return conclusion;
     }
+
     public void sortGraphic() {
         graphicOfReceptions.add(patient.seeDoctorAndReasonForSeeing(patient.symptoms, patient.timeOfSeeing));
         for (int i = 0; i < graphicOfReceptions.size(); i++) {

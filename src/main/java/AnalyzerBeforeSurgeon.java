@@ -17,20 +17,20 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
 
     @Override
     public String sendOwnPrescription(String conclusion,String whichDoctor) {
-        if (doctor.sendPrescriptionOfFamilyDoctor(conclusion ).equals(doctor.firstStageOfEmergency)){
-            sendOwnPrescription(" ", "" );
-        } else if (doctor.sendPrescriptionOfFamilyDoctor(conclusion).equals(doctor.secondStageOfEmergency)){
-        sendOwnPrescription(" ", " ");
+        if (doctor.sendPrescriptionOfFamilyDoctor(conclusion, whichDoctor).equals(doctor.firstStageOfEmergency)){
+            sendOwnPrescription(conclusion, whichDoctor);
+        } else if (doctor.sendPrescriptionOfFamilyDoctor( conclusion, whichDoctor).equals(doctor.secondStageOfEmergency)){
+            sendOwnPrescription(conclusion, whichDoctor);
         } else {
-            sendOwnPrescription(" " , " ");
+            sendOwnPrescription(conclusion, whichDoctor);
         }
         if (!cure){
-            sendOwnPrescription( " ",  String.valueOf(surgeon));
+            sendOwnPrescription( conclusion,  String.valueOf(surgeon));
         } else {
             sendOwnPrescription("Doctor has cure" , String.valueOf(this));
         }
         if (!cure){
-            sendOwnPrescription(" ", String.valueOf(surgeon));
+            sendOwnPrescription(conclusion, String.valueOf(surgeon));
         } else {
             sendOwnPrescription("Doctor has cure", String.valueOf(this));
         }

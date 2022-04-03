@@ -13,7 +13,7 @@ public class PostgreSQLJDBC {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
                     .getConnection("jdbc:postgresql://localhost:5432/testdb",
-                            "manisha", "123");
+                            "root", "postgres");
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();

@@ -9,9 +9,7 @@ public class Ophthalmologist extends Doctor implements DoctorMethod{
 
 
     protected Ophthalmologist(String name, String cureEmergency,boolean cure) {
-        this.name = name;
-        this.cure = cure;
-        this.cureEmergency = cureEmergency;
+      super(name, cureEmergency, cure);
         }
 
         public static Ophthalmologist create(){
