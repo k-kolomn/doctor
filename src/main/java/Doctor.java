@@ -3,7 +3,6 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Doctor {
-    // TODO: 28.03.2022 remake prescriptions of doctors, they can send only one pres., if they  want to send it to another doctor just add there "whichDoctor" and choice if they want or not
     String name;
     String cureEmergency;
     boolean cure;
@@ -57,7 +56,8 @@ public class Doctor {
         return conclusion;
     }
 
-    public void sortGraphic() {
+
+    public void sortTimetable() {
         graphicOfReceptions.add(patient.seeDoctorAndReasonForSeeing(patient.symptoms, patient.timeOfSeeing));
         for (int i = 0; i < graphicOfReceptions.size(); i++) {
             graphicOfReceptions.stream()

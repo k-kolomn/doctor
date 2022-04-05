@@ -5,6 +5,7 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
     static String name;
     static boolean cure;
     static String cureEmergency;
+    boolean surgery = false;
     Patient patient = Patient.create();
     Doctor doctor = new Doctor();
     Surgeon surgeon = new Surgeon(Surgeon.name);
@@ -35,7 +36,6 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
             sendOwnPrescription("Doctor has cure", String.valueOf(this));
         }
         return  conclusion;
-
     }
 
     public static AnalyzerBeforeSurgeon create(String name){
