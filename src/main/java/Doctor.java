@@ -1,11 +1,16 @@
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 
+@Setter @Getter
 public class Doctor {
     String name;
     String cureEmergency;
     boolean cure;
+    String whichDoctor;
     String firstStageOfEmergency = "not urgent, something that is used for big amount of time";
     String secondStageOfEmergency = "urgent, using has to be fast";
     String thirdStageOfEmergency = "very urgent, using at max speed almost without restrictions";
@@ -18,7 +23,7 @@ public class Doctor {
         this.cure = cure;
     }
 
-    public Doctor() {
+    protected Doctor() {
     }
 
 
@@ -28,31 +33,35 @@ public class Doctor {
     }
 
     public void getPrescriptionFromFamilyDoctor() {
-        String whichDoctor = null;
         switch (Objects.requireNonNull(whichDoctor)) {
-            case "AnalyzerBeforeSurgeon": {
+            case "AnalyzerBeforeSurgeon" -> {
                 AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
             }
-            break;
-            case "Ophthalmologist": {
+            case "Ophthalmologist" -> {
                 Ophthalmologist ophthalmologist = new Ophthalmologist(Ophthalmologist.name, Ophthalmologist.cureEmergency, Ophthalmologist.cure);
             }
-            break;
-            case "Surgeon": {
+            case "Surgeon" -> {
                 AnalyzerBeforeSurgeon analyzerBeforeSurgeon = AnalyzerBeforeSurgeon.create(AnalyzerBeforeSurgeon.name);
                 System.out.println("Firstly it has to be checked by analyzer");
             }
-            break;
-            case "FamilyDoctor": {
-                System.out.println("It is owen prescription");
+            case "FamilyDoctor" -> {
+                System.out.println("It is own prescription");
                 FamilyDoctor familyDoctor = FamilyDoctor.create();
             }
+//            default -> {
+//                System.out.println("It is own prescription");
+//                FamilyDoctor familyDoctor = FamilyDoctor.create();
+//            }
         }
     }
 
+    public void getSurgeonPrescription(){
+        Surgeon surgeon = Surgeon.create(Surgeon.name);
+        surgeon.sendPrescriptionAfterSurgery(surgeon.conclusion, patient.doctor);
+    }
 
-    public String sendPrescriptionOfFamilyDoctor(String conclusion, String whichDoctor) {
-
+    public String  sendPrescriptionOfFamilyDoctor(String conclusion, String whichDoctor) {
+        getWhichDoctor();
         return conclusion;
     }
 

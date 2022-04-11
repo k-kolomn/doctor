@@ -1,3 +1,8 @@
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Patient {
     String name;
     int age;
@@ -7,42 +12,6 @@ public class Patient {
     Doctor doctor = Doctor.create();
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
-    }
-
-    public int getTimeOfSeeing() {
-        return timeOfSeeing;
-    }
-
-    public void setTimeOfSeeing(int timeOfSeeing) {
-        this.timeOfSeeing = timeOfSeeing;
     }
 
     private Patient() {
@@ -73,7 +42,7 @@ public class Patient {
             } break;
         }
         if (age < 18){
-            Pediatric pediatric = new Pediatric();
+            Pediatric pediatric = new Pediatric(Pediatric.name, Pediatric.cureEmergency, Pediatric.cure);
         }
 
 

@@ -32,6 +32,7 @@ public class AnalyzerBeforeSurgeon extends Doctor implements DoctorMethod{
         }
         if (!cure){
             sendOwnPrescription(conclusion, String.valueOf(surgeon));
+            surgery = true;
         } else {
             sendOwnPrescription("Doctor has cure", String.valueOf(this));
         }

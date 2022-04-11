@@ -1,9 +1,9 @@
 
 
 public class Pediatric extends Doctor implements DoctorMethod {
-    String name;
-    String cureEmergency;
-    boolean cure;
+  static String name;
+  static String cureEmergency;
+  static boolean cure;
 
     protected Pediatric(String name, String cureEmergency, boolean cure){
         super(name, cureEmergency,cure);
@@ -12,4 +12,6 @@ public class Pediatric extends Doctor implements DoctorMethod {
     public String sendOwnPrescription(String conclusion, String whichDoctor) {
         return conclusion;
     }
+
+
 }
